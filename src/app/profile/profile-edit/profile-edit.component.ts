@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { Profile } from '../profile';
 
 @Component({
   selector: 'app-profile-edit',
@@ -8,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditComponent implements OnInit {
 values: string[];
-
+ @Input() profile: Profile;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  submitForm(value: any) {
+    console.log(value);
   }
 
 }
