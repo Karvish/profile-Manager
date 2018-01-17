@@ -8,9 +8,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { ProfileService } from "./profile/profile.service";
 import {ChipsModule} from 'primeng/primeng';
 
-
-
-
 //import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 //import { InMemoryDataService } from './in-memory-data.service';
 
@@ -29,7 +26,7 @@ const appRoutes: Routes = [
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
   { path: "dashboard", component: DashboardComponent },
   { path: "profile-detail/:id", component: ProfileDetailComponent },
-  { path: "profile-edit", component: ProfileEditComponent }
+ 
 
 ];
 
