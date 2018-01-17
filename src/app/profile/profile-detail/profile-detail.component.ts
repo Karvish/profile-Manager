@@ -10,11 +10,13 @@ import { ProfileService } from "../profile.service";
 @Component({
   selector: 'app-profile-detail',
   templateUrl: './profile-detail.component.html',
-  styleUrls: ['./profile-detail.component.css']
+  styleUrls: ['./profile-detail.component.css'],
+
 })
 export class ProfileDetailComponent implements OnInit {
 
 	  profile: Profile;
+    private showEdit =  false;
 
 constructor(
     private route: ActivatedRoute,
@@ -36,6 +38,10 @@ constructor(
 
  goBack(): void {
     this.location.back();
+  }
+
+  editProfile(): void{
+    (this.showEdit == false) ? this.showEdit = true : this.showEdit = false
   }
 
 
