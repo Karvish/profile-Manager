@@ -1,3 +1,129 @@
-<p>
-  profile-add works!
-</p>
+
+<div class="panel">
+  <div class="panel-header add-header">
+    Add Profile
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-8">  
+        <form action="" #addForm="ngForm" (ngSubmit)="submitForm(addForm.value)">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="emp_id">Employee Id: </label>
+                <input type="number" name="emp_id" class="form-control" [ngModel]="emp_id">
+              </div>
+              <div class="col-md-6">
+                <label for="designation">Designation</label>
+                <input type="text" name="designation" class="form-control" [ngModel]="designation">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="first_name">First name</label>
+                <input type="text" name="first_name" class="form-control" [ngModel]="first_name">
+              </div>
+              <div class="col-md-6">
+                <label for="last_name">Last name</label>
+                <input type="text" name="last_name" class="form-control" class="form-control" [ngModel]="last_name" >
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="gender">Gender</label>
+                <select class="form-control" name="gender" [ngModel]="gender">
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="experience">Experience</label>
+                <input type="number" name="experience" class="form-control" [ngModel]="experience">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="company">Comapny</label>
+                <input type="text" name="company" class="form-control" [ngModel]="company">
+              </div>
+              <div class="col-md-6">
+                <label for="location">Location</label>
+                <select class="form-control"  name="location" [ngModel]="location">
+                  <option>Coimbatore</option>
+                  <option>Chennai</option>
+                  <option>Bangalore</option>
+                  <option>Hyderabad</option>
+                  <option>Mumbai</option>
+                  <option>Cochin</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="phone">Phone</label>
+                <input type="number" name="phone" class="form-control" [ngModel]="phone">
+              </div>
+              <div class="col-md-6">
+                <label for="email">Email</label>
+                <input type="text" name="email" class="form-control" [ngModel]="email">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-12">
+                <label for="current_project">Current Project</label>
+                <input type="text" name="current_project" class="form-control" [ngModel]="current_project">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="release_date">Release Date</label>
+                <input type="text" name="release_date" class="form-control" [ngModel]="release_date">
+              </div>
+              <div class="col-md-6">
+                <div>
+                  <label for="isAvailable">Availability</label>
+                </div>
+
+                 <input type="checkbox" name="isAvailable" [ngModel]="isAvailable">
+        
+              </div>
+            </div>
+          </div>
+            <div class="form-group">
+            <div class="row">
+              <div class="col-md-12">
+                <label for="technology">Technology</label>
+                
+         <p-chips [ngModel] ="technology" name="technology"></p-chips>
+ 
+               
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-12">
+                <label for="summary">Summary</label>
+                <textarea class="form-control" name="summary" [ngModel]="summary"></textarea>
+              </div>
+            </div>
+          </div>
+         <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

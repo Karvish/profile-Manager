@@ -86,3 +86,14 @@ li.message-footer {
 ul.alert-dropdown {
     width: 200px;
 }
+.btn-addProfile{
+    float: right;
+    background: rgba(255, 255, 255, 0);
+    color: #fff;
+    border: solid 1px rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    margin-top: 9px;
+}
+.btn-addProfile:hover{
+     background: rgba(255, 255, 255, 0.18);
+}

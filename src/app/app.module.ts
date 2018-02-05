@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from "@angular/router";
@@ -19,12 +19,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileDetailComponent } from './profile/profile-detail/profile-detail.component';
 import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
+import { ProfileAddComponent } from './profile/profile-add/profile-add.component';
 import { DateConverterPipe } from './date-converter.pipe';
+import { ProfileTileComponent } from './shared/profile-tile/profile-tile.component';
 
 
 const appRoutes: Routes = [
   { path: "", redirectTo: "dashboard", pathMatch: "full" },
   { path: "dashboard", component: DashboardComponent },
+  { path: "profile-add", component: ProfileAddComponent },
   { path: "profile-detail/:id", component: ProfileDetailComponent },
  
 
@@ -39,15 +42,19 @@ const appRoutes: Routes = [
     SidemenuComponent,
     DashboardComponent,
     ProfileComponent,
+    ProfileAddComponent,
     ProfileDetailComponent,
     ProfileEditComponent,
     DateConverterPipe,
+    ProfileTileComponent
+
 
   ],
  imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ChipsModule,
     
@@ -56,6 +63,7 @@ const appRoutes: Routes = [
     )
   ],
   providers: [ProfileService],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

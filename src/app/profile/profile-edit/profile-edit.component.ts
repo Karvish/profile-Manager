@@ -1,5 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Profile } from '../profile';
+import { ProfileService } from "../profile.service";
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profile-edit',
@@ -7,17 +10,36 @@ import { Profile } from '../profile';
   styleUrls: ['./profile-edit.component.css']
 })
 export class ProfileEditComponent implements OnInit {
-values: string[];
  @Input() profile: Profile;
+ @Output()
+ doneEdit: EventEmitter<Boolean> = new EventEmitter<Boolean> ();
 
-  constructor() { }
+  constructor( private profileService: ProfileService,    private location: Location) {
+
+
+   }
+
 
   ngOnInit() {
+    
+
+  }
+
+  goBack(): void {
+    this.location.back();
+  }   
+    
+
+  updateProfile(event, data): void {
+      const id = this.profile._id.$oid;
+      const showEdit =  true;
+      this.profileService.updateProfile(data, id)
+      .subscribe(() => this.doneEdit.emit(showEdit))
   }
 
 
-  submitForm(value: any) {
-    console.log(value);
+  submitForm(event, value: any) {   
+  	this.updateProfile(event, value);
   }
 
 }

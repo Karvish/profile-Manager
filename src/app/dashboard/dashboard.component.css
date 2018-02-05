@@ -1,54 +1,6 @@
 /*CSS*/
-.profile-item .panel-title{
-    padding:15px;
-}
 h4.section-title {
     margin-bottom:20px;
     border-bottom:solid 1px #ccc;
     padding-bottom:10px;
-}
-.panel-body{
-	padding-top: 0;
-}
-.skill-set{
-	padding-top: 15px;
-    
-  
-
-}
-.panel-footer {
-	padding:0;
-	    background-color: #ffffff;
-
-}
-.panel-footer .pl-footer-list{
-	list-style: none;
-	padding:0;
-	margin: 0;
-	clear: both;
-	display: flex;
-	  flex-flow: row wrap;
-	 
-  
-}
-.panel-footer .pl-footer-list >li.f-end{
-	 margin-left: auto;
-	
-
-}
-
-.panel-footer .pl-footer-list>li{
-
-}
-.panel-footer .pl-footer-list>li>a{
-	display: block;
-	padding:10px 15px;
-}
-.panel-title{
-	position: relative;
-}
-
-.panel-title a.indicator{
-	right: 10px;
-    top: 10px;	
 }

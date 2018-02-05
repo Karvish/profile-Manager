@@ -1,0 +1,28 @@
+ <div class="col-md-4 profile-item" *ngIf="profile">
+    <div class="panel">
+      <div class="panel-title">
+        <div>
+          <h4>{{profile.first_name + ',' + profile.last_name}} ({{profile.emp_id}})</h4>  
+          <div class="designation">{{profile.designation}}</div>
+        </div>
+        <a href="#" class="indicator" [ngClass] = "(profile.isAvailable) ? 'available' : 'not-available'" [attr.title]="(profile.isAvailable) ? 'Available' : 'Not Available' "></a>
+      </div>
+      <div class="panel-body">
+        <div class="profile-summary"> {{profile.summary}}</div>
+        <div class="skill-set"> Skill Set: <span *ngFor="let skill of profile.technology">
+          
+          {{skill}}, 
+
+        </span></div>
+      </div>
+      <div class="panel-footer">
+        <ul class="pl-footer-list">
+          <li><a routerLink = "/profile-detail/{{profile._id.$oid}}" >More Details</a></li>    
+          
+            <li class="f-end"><a href="#"><i class="fa fa-download"></i></a></li>
+            <li class="f-end"><a href="#"><i class="fa fa-envelope-o"></i></a></li>            
+             <li class="f-end"><a href="#"><i class="fa fa-heart"></i></a></li>   
+        </ul>
+      </div>
+    </div>
+  </div>

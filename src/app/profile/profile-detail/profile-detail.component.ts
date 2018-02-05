@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs/Rx';
+import { AnonymousSubscription } from "rxjs/Subscription";
 
 import { Profile } from '../profile';
 import { ProfileService } from "../profile.service";
-
 
 
 @Component({
@@ -13,10 +14,12 @@ import { ProfileService } from "../profile.service";
   styleUrls: ['./profile-detail.component.css'],
 
 })
-export class ProfileDetailComponent implements OnInit {
+export class ProfileDetailComponent implements OnInit, OnDestroy {
 
 	  profile: Profile;
     private showEdit =  false;
+    private timerSubscription: AnonymousSubscription;
+    private postsSubscription: AnonymousSubscription;
 
 constructor(
     private route: ActivatedRoute,
@@ -25,16 +28,40 @@ constructor(
   ) {}
 
   ngOnInit(): void {
-  	 this.getHero();
-  	 
-  	
+  	 this.getProfile();   	
   }
 
-  getHero(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-      this.profileService.getProfile(id)
-      .subscribe(profile => this.profile = profile)
+ ngOnDestroy(): void {
+    if (this.postsSubscription) {   
+      this.postsSubscription.unsubscribe();
+    }
+    if (this.timerSubscription) {    
+      this.timerSubscription.unsubscribe();
+    }
   }
+
+  subscribeToData(): void {
+
+    this.timerSubscription = Observable.timer(500)
+      .subscribe(() => this.getProfile());
+  }
+
+  getProfile(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+      this.postsSubscription = this.profileService.getProfile(id)
+      .subscribe((profile) =>{
+          this.profile = profile;
+          this.subscribeToData();
+      },
+      function (error) {
+        console.log(error);
+      },
+      function () {
+        console.log("complete");
+      })
+
+  }
+
 
  goBack(): void {
     this.location.back();
@@ -42,6 +69,12 @@ constructor(
 
   editProfile(): void{
     (this.showEdit == false) ? this.showEdit = true : this.showEdit = false
+  }
+
+  doneEditProfile = function(showEdit){  
+    this.showEdit = showEdit;
+    this.editProfile();
+
   }
 
 

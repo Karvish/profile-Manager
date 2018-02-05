@@ -6,7 +6,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-8">  
-        <form action="" #editForm="ngForm" (ngSubmit)="submitForm(editForm.value)">
+        <form action="" #editForm="ngForm" (ngSubmit)="submitForm($event, editForm.value)">
           <div class="form-group">
             <div class="row">
               <div class="col-md-6">
@@ -96,7 +96,7 @@
                   <label for="isAvailable">Availability</label>
                 </div>
 
-                 <input type="checkbox" name="isAvailable" [(ngModel)]="profile.isAvailable">
+                 <input type="checkbox" name="isAvailable" [ngModel]="profile.isAvailable">
         
               </div>
             </div>
@@ -106,9 +106,8 @@
               <div class="col-md-12">
                 <label for="technology">Technology</label>
                 
-<select multiple name="technology" class="form-control" [(ngModel)]="profile.technology">
-        <option *ngFor="let tech of profile.technology" >{{tech}}</option>
-      </select>
+         <p-chips [ngModel] ="profile.technology" name="technology"></p-chips>
+ 
                
               </div>
             </div>

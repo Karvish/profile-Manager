@@ -79,6 +79,6 @@
 </div>
 
 <!--Edit Profile Template-->
-<app-profile-edit [hidden]="!showEdit"  [profile] = 'profile'></app-profile-edit>
+<app-profile-edit [hidden]="!showEdit"  [profile] = 'profile'  (doneEdit)="doneEditProfile($event)"></app-profile-edit>
 
 </div>

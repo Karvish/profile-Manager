@@ -11,20 +11,32 @@ import { ProfileService } from "../profile/profile.service";
 })
 export class DashboardComponent implements OnInit {
     profiles: Profile[] = [];
+    private totalProfiles;
    
   constructor( private router: Router,
-    private profileService: ProfileService) { }
+    private profileService: ProfileService) { 
+
+  }
 
 
   ngOnInit() : void  {  
-   this.getProfiles();
+   this.getProfiles(); 
 
   }
 
   //Get All Profiles From Server
   getProfiles(){
      this.profileService.getProfiles()
-      .subscribe(profiles => this.profiles = profiles);
+      .subscribe((profiles)=>{
+         this.profiles = profiles;
+         this.getTotalProfiles(profiles);
+      }, (error: any) => {
+        console.log("Error Loading profiles " + error);
+      });
+  }
+
+  getTotalProfiles(profiles){
+    this.totalProfiles = profiles.length || 0;
   }
 
   
